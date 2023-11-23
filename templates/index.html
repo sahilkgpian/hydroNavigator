@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <title>ChemSpace Navigator Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #9ea4a8;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #9ea4a8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #7c0ca8;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: crimson;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #410c0c;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .radio-label {
+            margin-right: 15px;
+            font-weight: normal;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 500px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(45, 117, 119); padding: 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="font-family: verdana; text-align: center; color: rgba(68, 12, 73, 0.808);">
+                <h1 style="padding-top: 0.5%;">
+                    <!-- Hydrocarbon Space! -->
+                    Chemical Space!
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="font-family: verdana; text-align: center; color: rgb(240, 202, 119);">
+                <p>
+                    <strong>Retrieve the Information using search categories:</strong>
+                </p>
+                <form action='/results' method='POST'>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <label for="fname">
+                                Please type a smile/molecule name/chemical formula of a "CHNO" below and select the information you are interested in retrieving:
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <input placeholder="type here" name="molecule_name" type="text" onclick="disable_()"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <!-- Your JavaScript functions here -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p>
+                                <input type='radio' id="Mol_name" name='choice' value='choice1'>
+                                <label for="Mol_name" class="radio-label">Search from Pubchem</label>
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>
+                                <input type='radio' id="smiles" name='choice' value='choice2'>
+                                <label for="smiles" class="radio-label">Chemical Properties with SMILES</label>
+                            </p>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <p>
+                            <input type='radio' id="stoichiometry_" name='choice' value='choice3' onclick="stoichiometry()">
+                            <label for="stoichiometry_" class="radio-label">Chemical Properties with Stoichiometry</label>
+                        </p>
+                        <div class="col-md-2">
+                            <label for="ElementC">&nbsp;&nbsp;C</label>
+                            <input type="number" name="ElementC" id="ElementC" min="0" max="15" step="1" value="0" class="form-control">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="ElementH">&nbsp;&nbsp;H</label>
+                            <input type="number" id="ElementH" name="ElementH" min="0" max="15" step="1" value="0" class="form-control">
+                        </div>
+                    </div>
+                    <!-- <strong>Note1: Please select the 4th checkbox to access the Stoichiometry values! (Be patient)</strong><br> -->
+                    <strong>Note: Reset to enable all the inputs!</strong>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type='submit' value='Get Information' class="btn btn-primary">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="Reset" onclick="enable_s()" class="btn btn-secondary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Add the iframe here -->
+        <div class="row">
+            <div class="col-md-12" style="font-family: verdana; text-align: center; color: white;">
+                <iframe src="https://pubchem.ncbi.nlm.nih.gov/edit3/index.html" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+
+

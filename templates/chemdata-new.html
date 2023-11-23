@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+        <script type="text/javascript" src="{{ url_for('static', filename='jsmol/JSmol.min.js') }}"></script>
+        <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Impact Bootstrap Template - Index</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+    </style>
+    <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Below are the chemical properties of {{name}}</title>
+    </head>
+<body style="background-color: rgb(76, 133, 187); padding-top: 2.5%;">
+    <h1 style="text-align:center;">Below are the chemical properties of {{name}}</h1>
+    <div style="display: flex;">
+        <!-- Left Column - Table -->
+        <div style="flex: 1; padding: 10px;">
+            <!-- Your table goes here -->
+            <table>
+                <!-- Table rows omitted for brevity -->
+                <table>
+                    <tr>
+                        <th>Property</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>smile_rep</td>
+                        <td>{{smiles_format}}</td>
+                    </tr>
+                    <tr>
+                        <td>Molecular_formula</td>
+                        <td>{{formula}}</td>
+                    </tr>
+                    <tr>
+                        <td>Molecular_weight</td>
+                        <td>{{mol_wt}}</td>
+                    </tr>
+                    <tr>
+                        <td>Pubchem_status</td>
+                        <td>{{pubchem_status}}</td>
+                    </tr>
+                    <tr>
+                        <td>Pubchem_cid</td>
+                        <td>{{pubchem_cid}}</td>
+                    </tr>
+                    <tr>
+                        <td>IUPAC_Name</td>
+                        <td>{{iupac_name}}</td>
+                        <tr>
+                            <td>Files_Name</td>
+                            <td><a href="#" onclick="loadStructure('{{ Name }}');" style="text-decoration:none">{{ Name }}</a></td>
+                        </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>{{RotationalconstantA}}</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>{{RotationalconstantB}}</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>{{RotationalconstantC}}</td>
+                    </tr>
+                    <tr>
+                        <td>mu</td>
+                        <td>{{Dipolemoment}}</td>
+                    </tr>
+                    <tr>
+                        <td>homo</td>
+                        <td>{{HOMO}}</td>
+                    </tr>
+                    <tr>
+                        <td>lumo</td>
+                        <td>{{LUMO}}</td>
+                    </tr>
+                    <tr>
+                        <td>gap</td>
+                        <td>{{EnergyGap}}</td>
+                    </tr>
+                    <tr>
+                        <td>zpve</td>
+                        <td>{{Zeropointenergy}}</td>
+                    </tr>
+                    <tr>
+                        <td>Final single point energy(Eh)</td>
+                        <td>{{Finalsinglepointenergy}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total thermal energy(Eh)</td>
+                        <td>{{Totalthermalenergy}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Enthalpy(Eh)</td>
+                        <td>{{TotalEnthalpy}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total entropy(Eh)</td>
+                        <td>{{Totalentropy}}</td>
+                    </tr>
+                    <tr>
+                        <td>Gibbs free energy(Eh)</td>
+                        <td>{{Gibbsfreeenergy}}</td>
+                    </tr>
+                </table>
+                
+                <!-- More table rows -->
+            </table>
+            <p><a href="javascript:history.back();" style="color: rgb(255, 0, 0);">Go back</a></p>
+        </div>
+        <!-- Right Column - Jmol Window -->
+        <div style="flex: 1; text-align: right; padding: 10px;">
+            <script type="text/javascript">
+                var Info = {
+                    width: 500,
+                    height: 500,
+                    serverURL: window.location.origin + "/{{ url_for('static', filename='jsmol/php/jsmol.php') }}",
+                    use: "HTML5",
+                    j2sPath: "static/jsmol/j2s/",
+                    console: "jmolApplet0_infodiv"
+                };
+                var jmolApplet0 = Jmol.getApplet("jmolApplet0", Info);
+            
+                function loadStructure(name) {
+                    var filePath = window.location.origin + "/{{ url_for('static', filename='structure/') }}" + name;
+                    Jmol.script(jmolApplet0, 'load ' + filePath);
+                }
+            </script>
+            <div id="jmolApplet0_infodiv"></div>
+        </div>
+        
+    </div>
+</body>
+</html>
